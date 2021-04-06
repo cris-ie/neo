@@ -24,7 +24,7 @@ spec:
             - name: DB_NAME
               value: {{ .Values.postgresql.postgresqlDatabase }}
             - name: DB_HOST
-              value: postgresql
+              value: {{ .Chart.Name }}-postgresql
             - name: DB_USER
               value: {{ .Values.postgresql.postgresqlUsername }}
             - name: DB_PASSWORD

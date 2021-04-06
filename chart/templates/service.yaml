@@ -7,5 +7,6 @@ spec:
     - port: 80
       targetPort: 8090
       protocol: TCP
+  #type: NodePort
   selector:
     app.kubernetes.io/name: {{ .Chart.Name }}

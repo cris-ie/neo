@@ -2,9 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Chart.Name }}
+  #annotations:
+  #  traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-    - host: localhost
+    - host: 127.0.0.1.nip.io
       http:
         paths:
           - path: /*
@@ -13,4 +15,4 @@ spec:
               service:
                 name: {{ .Chart.Name }}
                 port:
-                  number: 8090
+                  number: 80
