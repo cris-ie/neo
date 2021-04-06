@@ -1,0 +1,9 @@
+apiVersion: v2
+name: neo
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: postgresql
+    version: 10.3.15
+    repository: https://charts.bitnami.com/bitnami

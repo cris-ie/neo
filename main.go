@@ -19,7 +19,12 @@ func getmyenv(s string) string {
 }
 func main() {
 
-	pgConfig := db.DbConfig{DbName: "neo", UserName: "crisie", UserPassword: "Lus", Host: "localhost", Port: "5432"}
+	port := os.Getenv("DB_PORT")
+	if len(port) == 0 {
+		port = "5432"
+	}
+
+	pgConfig := db.DbConfig{DbName: os.Getenv("DB_NAME"), UserName: os.Getenv("DB_USER"), UserPassword: os.Getenv("DB_PASSWORD"), Host: os.Getenv("DB_HOST"), Port: "5432"}
 	neoConfig := neoclient.NeoClientConfig{
 		Url:    "https://api.nasa.gov/neo/rest/v1/feed",
 		ApiKey: os.Getenv("NASA_KEY"),

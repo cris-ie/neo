@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Chart.Name }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Chart.Name }}
+      annotations:
+        helm-revisions: "{{ .Release.Revision }}"
+    spec:
+      containers:
+        - image: crisied/neo:latest
+          imagePullPolicy: Always
+          name: {{ .Chart.Name }}
+          ports:
+            - containerPort: 8090
+          env:
+            - name: DB_NAME
+              value: {{ .Values.postgresql.postgresqlDatabase }}
+            - name: DB_HOST
+              value: postgresql
+            - name: DB_USER
+              value: {{ .Values.postgresql.postgresqlUsername }}
+            - name: DB_PASSWORD
+              value: {{ .Values.postgresql.postgresqlPassword }}
