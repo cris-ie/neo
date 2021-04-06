@@ -14,17 +14,14 @@ import (
 
 const port = "8090"
 
-func getmyenv(s string) string {
-	return os.Getenv(s)
-}
 func main() {
 
-	port := os.Getenv("DB_PORT")
-	if len(port) == 0 {
-		port = "5432"
+	dbport := os.Getenv("DB_PORT")
+	if len(dbport) == 0 {
+		dbport = "5432"
 	}
 
-	pgConfig := db.DbConfig{DbName: os.Getenv("DB_NAME"), UserName: os.Getenv("DB_USER"), UserPassword: os.Getenv("DB_PASSWORD"), Host: os.Getenv("DB_HOST"), Port: "5432"}
+	pgConfig := db.DbConfig{DbName: os.Getenv("DB_NAME"), UserName: os.Getenv("DB_USER"), UserPassword: os.Getenv("DB_PASSWORD"), Host: os.Getenv("DB_HOST"), Port: dbport}
 	neoConfig := neoclient.NeoClientConfig{
 		Url:    "https://api.nasa.gov/neo/rest/v1/feed",
 		ApiKey: os.Getenv("NASA_KEY"),
