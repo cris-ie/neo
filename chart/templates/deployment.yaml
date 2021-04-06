@@ -29,3 +29,5 @@ spec:
               value: {{ .Values.postgresql.postgresqlUsername }}
             - name: DB_PASSWORD
               value: {{ .Values.postgresql.postgresqlPassword }}
+            - name: NASA_KEY
+              value: {{ .Values.neoapi.neoapiKey }}
