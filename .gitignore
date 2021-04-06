@@ -15,3 +15,5 @@
 # vendor/
 #
 chart/charts
+
+/apikey.txt
