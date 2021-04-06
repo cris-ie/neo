@@ -40,7 +40,7 @@ func main() {
 	}
 	apiServer := api.NewApiServer(pgClient)
 	from := time.Now()
-	to := time.Now().AddDate(0, 0, 1)
+	to := time.Now().AddDate(0, 0, 7)
 	neoclient.UpsertEntries(from, to)
 	defer pgClient.Close()
 	fmt.Println("Starting application")
