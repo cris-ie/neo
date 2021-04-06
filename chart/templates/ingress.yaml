@@ -2,14 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Chart.Name }}
-  #annotations:
-  #  traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-    - host: 127.0.0.1.nip.io
+    - host: neo.127.0.0.1.nip.io
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: Prefix
             backend:
               service:
