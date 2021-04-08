@@ -19,3 +19,5 @@ chart/charts
 /apikey.txt
 
 /chart/values.yaml
+
+/response.json
