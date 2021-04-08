@@ -31,9 +31,12 @@ The application can be started using the provided helm chart or locally
 ## Running the Application using helm
 
 Assuming you have the prerequisites running run the following command to start the Application and its dependencies
-make build
+
+`make build`
+
 And after a succsessfull build run
-make deploy
+
+`make deploy`
 
 ## Running the go application directly
 
