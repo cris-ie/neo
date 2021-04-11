@@ -4,7 +4,7 @@ metadata:
   name: {{ .Chart.Name }}
 spec:
   rules:
-    - host: neo.127.0.0.1.nip.io
+    - host: localhost
       http:
         paths:
           - path: /

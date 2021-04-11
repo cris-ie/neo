@@ -8,4 +8,5 @@ run: build
 
 .PHONY: deploy
 deploy:
+	helm dep update chart
 	helm upgrade -n neo -i neo chart --atomic --wait --timeout 200s --create-namespace --debug
