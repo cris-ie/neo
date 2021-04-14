@@ -44,6 +44,7 @@ Assuming you have a Postgresql datbase running you need to specify some environm
 
 - DB_NAME: The name of the database to use. E.g.: neo
 - DB_HOST: The host where postgresql runs. E.g.: localhost
+- DB_PORT: The port of the psql database. E.g. : 5432
 - DB_USER: A user name that has access rights to the Database. E.g.: postgres
 - DB_PASSWORD: The `DB_USER`s password
 - NASA_KEY: An API Key for NASA JPLs NEO Api
