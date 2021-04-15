@@ -1,4 +1,4 @@
-package neoclient
+package neoClient
 
 import (
 	"encoding/json"

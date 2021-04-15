@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"local/neo-api/api"
 	"local/neo-api/db"
-	neoclient "local/neo-api/neo-client"
+	"local/neo-api/neoClient"
 	"os"
 	"time"
 
@@ -22,12 +22,12 @@ func main() {
 	}
 
 	pgConfig := db.DbConfig{DbName: os.Getenv("DB_NAME"), UserName: os.Getenv("DB_USER"), UserPassword: os.Getenv("DB_PASSWORD"), Host: os.Getenv("DB_HOST"), Port: dbport}
-	neoConfig := neoclient.NeoClientConfig{
+	neoConfig := neoClient.NeoClientConfig{
 		Url:    "https://api.nasa.gov/neo/rest/v1/feed",
 		ApiKey: os.Getenv("NASA_KEY"),
 	}
 	pgClient := db.CreateConnectClient(pgConfig)
-	neoclient := neoclient.NewNeoClient(&pgClient, neoConfig)
+	neoClient := neoClient.NewNeoClient(&pgClient, neoConfig)
 
 	e := echo.New()
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -41,7 +41,7 @@ func main() {
 	apiServer := api.NewApiServer(pgClient)
 	from := time.Now()
 	to := time.Now().AddDate(0, 0, 7)
-	neoclient.UpsertEntries(from, to)
+	neoClient.UpsertEntries(from, to)
 	defer pgClient.Close()
 	fmt.Println("Starting application")
 
