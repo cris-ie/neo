@@ -48,3 +48,22 @@ Assuming you have a Postgresql datbase running you need to specify some environm
 - DB_USER: A user name that has access rights to the Database. E.g.: postgres
 - DB_PASSWORD: The `DB_USER`s password
 - NASA_KEY: An API Key for NASA JPLs NEO Api
+
+
+## Running the Application using vagrant
+
+By using vagrant there is no need to install the k3s on the local system.
+The `Vagrantfile` defines a Ubuntu 21.04 virtual machine that provide the `k3s`
+dependency.
+
+### Requirements
+- vagrant
+- virtualbox
+
+To build the vagrant ubuntu virtual box.
+
+`make vagrant`
+
+To start the Application and its dependencies and query some application urls.
+
+`make full`
