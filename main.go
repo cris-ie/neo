@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
 // Default webserver port
@@ -17,7 +16,7 @@ const port = "8090"
 
 func main() {
 
-	// Set DB port to ENV value or default. TODO do this for all arguments where aplicable
+	// Set DB port to ENV value or default. TODO do this for all arguments where applicable
 	dbport := os.Getenv("DB_PORT")
 	if len(dbport) == 0 {
 		dbport = "5432"
@@ -42,12 +41,6 @@ func main() {
 
 	// Create new web server instance
 	echoWebServer := echo.New()
-
-	// Add CORS middleware
-	echoWebServer.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"*"},
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-	}))
 
 	//Create DB Schema in selected DB
 	err := pgClient.CreateSchemaIfNotExists()
